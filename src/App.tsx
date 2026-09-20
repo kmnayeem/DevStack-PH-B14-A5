@@ -1,3 +1,4 @@
+import Banner from "./components/Banner";
 import Nav from "./components/Nav";
 
 const productsProise = async()=> {
@@ -11,6 +12,7 @@ function App() {
   return (
     <>
       <Nav />
+      <Banner />
     </>
   )
 }
