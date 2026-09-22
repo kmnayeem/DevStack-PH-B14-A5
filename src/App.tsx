@@ -19,17 +19,6 @@ const App = () => {
   const [saved, setSaved] = useState<ITech[]>([]);
 
   const handleAddTech = (tech: ITech) => {
-    const existingTech = saved.find(
-      (item) => item.category === tech.category,
-    );
-
-    if(existingTech) {
-      toast.error(
-        `${existingTech.name} is already selected from this category`,
-      );
-      return;
-    }
-
     setSaved((prev) => [...prev, tech]);
     toast.success(`${tech.name} added to your stack`);
   };
@@ -57,7 +46,7 @@ const App = () => {
 
       <Banner />
 
-      <main>
+      <main className="mb-16">
         <section>
           <div className="mb-8">
             <h1 className="text-5xl font-bold text-[#0F172A]">

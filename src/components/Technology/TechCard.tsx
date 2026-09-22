@@ -23,16 +23,12 @@ const TechCard = ({
 
   const selected = saved.some((item) => item.id === tech.id);
 
-  const categorySelected = saved.some(
-    (item) => item.category === tech.category
-  );
-
   const badgeClass = selected
     ? "border-pink-300 bg-pink-100 text-pink-500"
     : "border-[#BAE6FD] bg-[#F0F9FF] text-[#0EA5E9]";
 
   const handleClick = () => {
-    if (selected || categorySelected) {
+    if (selected) {
       return;
     }
 
@@ -43,8 +39,6 @@ const TechCard = ({
 
   if (selected) {
     buttonText = "✓ Added to Stack";
-  } else if (categorySelected) {
-    buttonText = "Category Selected";
   }
 
   return (
@@ -55,9 +49,7 @@ const TechCard = ({
           : "border-[#E8EDF3] bg-white"
       }`}
     >
-   
       <div className="flex items-center justify-between">
-        
         <div className="flex items-center">
           <img
             src={icon}
@@ -88,13 +80,11 @@ const TechCard = ({
       </div>
 
       <div className="mt-6">
-
         <div>
           <hr className="border-[#EDF1F5]" />
         </div>
 
         <div className="mt-4 flex items-center justify-between">
-
           <div>
             <span className="rounded-md bg-[#F1F5F9] px-3 py-2 text-xs text-[#475569]">
               {category}
@@ -118,7 +108,7 @@ const TechCard = ({
         <div className="mt-5">
           <button
             type="button"
-            disabled={selected || categorySelected}
+            disabled={selected}
             onClick={handleClick}
             className="
               w-full
