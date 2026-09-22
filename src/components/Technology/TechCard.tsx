@@ -43,9 +43,9 @@ const TechCard = ({
 
   return (
     <article
-      className={`w-full rounded-2xl border p-5 shadow-sm transition-colors ${
+      className={`w-full rounded-2xl border p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 ${
         selected
-          ? "border-pink-200 bg-pink-50"
+          ? "border-pink-300 bg-pink-100"
           : "border-[#E8EDF3] bg-white"
       }`}
     >
