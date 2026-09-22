@@ -2,8 +2,8 @@ import Logo from "../assets/logo-text.png";
 
 const Footer = () => {
     return (
-        <div className="border-t border-gray-100 bg-white">
-            <div className="container mx-auto py-14">
+        <div className="container mx-auto border-t border-gray-100 bg-white">
+            <div className="py-14">
                 <div className="flex flex-row justify-between gap-10">
                     <div>
                         <img

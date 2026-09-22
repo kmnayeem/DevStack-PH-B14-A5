@@ -2,7 +2,7 @@ import BannerPicture from "../assets/banner-stack.png";
 
 const Banner = () => {
   return (
-    <section className="bg-white">
+    <section>
       <div className="container mx-auto flex items-center justify-between py-20">
         
         <div>

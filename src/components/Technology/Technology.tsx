@@ -16,7 +16,7 @@ const Technology = ({
   const allTechnologies = use(technologiesPromise);
 
   return (
-    <div className='col-span-3 grid grid-cols-3 gap-5'>
+    <div className="grid grid-cols-3 gap-5">
       {allTechnologies.length === 0 ? (
         <p>No technologies found</p>
       ) : (
@@ -34,3 +34,4 @@ const Technology = ({
 };
 
 export default Technology;
+

@@ -7,7 +7,7 @@ import { Suspense, useState } from "react";
 import type { ITech } from "./Types";
 import { toast } from "react-toastify";
 
-const fetchTechnologies = async () => {
+const fetchTechnologies = async (): Promise<ITech[]> => {
   const res = await fetch("/data.json");
   const data = await res.json();
   return data;
@@ -17,22 +17,28 @@ const technologiesPromise = fetchTechnologies();
 
 const App = () => {
   const [saved, setSaved] = useState<ITech[]>([]);
+
   const handleAddTech = (tech: ITech) => {
-    const existingTech = saved.find((item) => item.category === tech.category);
-    if (existingTech) {
+    const existingTech = saved.find(
+      (item) => item.category === tech.category,
+    );
+
+    if(existingTech) {
       toast.error(
         `${existingTech.name} is already selected from this category`,
       );
       return;
     }
-    setSaved([...saved, tech]);
+
+    setSaved((prev) => [...prev, tech]);
     toast.success(`${tech.name} added to your stack`);
   };
 
   const handleRemoveTech = (id: string) => {
     const findTech = saved.find((item) => item.id === id);
-    const updatedList = saved.filter((item) => item.id !== id);
-    setSaved(updatedList);
+
+    setSaved((prev) => prev.filter((item) => item.id !== id));
+
     if (findTech) {
       toast.error(`${findTech.name} removed from your stack`);
     }
@@ -40,16 +46,19 @@ const App = () => {
 
   const handleClearAll = () => {
     if (!saved.length) return;
+
     setSaved([]);
     toast.error("Your stack is cleared.");
   };
 
   return (
-    <div>
+    <div className="container mx-auto">
       <Nav />
+
       <Banner />
+
       <main>
-        <section className="container mx-auto my-10">
+        <section>
           <div className="mb-8">
             <h1 className="text-5xl font-bold text-[#0F172A]">
               Explore the{" "}
@@ -64,13 +73,24 @@ const App = () => {
           </div>
 
           <div className="grid grid-cols-4 gap-5">
-            <Suspense fallback={<div>loading...</div>}>
-              <Technology
-                handleAddTech={handleAddTech}
-                technologiesPromise={technologiesPromise}
-                saved={saved}
-              />
-            </Suspense>
+            <div className="col-span-3">
+              <Suspense
+                fallback={
+                  <div className="flex min-h-[400px] items-center justify-center">
+                    <p className="text-lg text-[#64748B]">
+                      Loading technologies...
+                    </p>
+                  </div>
+                }
+              >
+                <Technology
+                  handleAddTech={handleAddTech}
+                  technologiesPromise={technologiesPromise}
+                  saved={saved}
+                />
+              </Suspense>
+            </div>
+
             <Stack
               technologies={saved}
               handleClearAll={handleClearAll}

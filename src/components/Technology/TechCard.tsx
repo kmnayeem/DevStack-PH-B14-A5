@@ -6,7 +6,11 @@ type TechCardProps = {
   handleAddTech: (tech: ITech) => void;
 };
 
-const TechCard = ({ tech, handleAddTech, saved }: TechCardProps) => {
+const TechCard = ({
+  tech,
+  handleAddTech,
+  saved,
+}: TechCardProps) => {
   const {
     icon,
     name,
@@ -20,11 +24,12 @@ const TechCard = ({ tech, handleAddTech, saved }: TechCardProps) => {
   const selected = saved.some((item) => item.id === tech.id);
 
   const categorySelected = saved.some(
-    (item) => item.category === tech.category,
+    (item) => item.category === tech.category
   );
 
-  const badgeClass =
-    "border-[#0EA5E9] bg-[#0EA5E9]/10 text-[#0EA5E9]";
+  const badgeClass = selected
+    ? "border-pink-300 bg-pink-100 text-pink-500"
+    : "border-[#BAE6FD] bg-[#F0F9FF] text-[#0EA5E9]";
 
   const handleClick = () => {
     if (selected || categorySelected) {
@@ -44,50 +49,96 @@ const TechCard = ({ tech, handleAddTech, saved }: TechCardProps) => {
 
   return (
     <article
-      className='flex min-h-[177px] w-full flex-col rounded-[11px] border border-[#E8EDF3] bg-white px-3 py-3 shadow-[0_1px_3px_rgba(15,23,42,0.04)]'
+      className={`w-full rounded-2xl border p-5 shadow-sm transition-colors ${
+        selected
+          ? "border-pink-200 bg-pink-50"
+          : "border-[#E8EDF3] bg-white"
+      }`}
     >
-      <div className='flex items-start justify-between'>
-        <img
-          src={icon}
-          alt={name}
-          className='h-7 w-7 object-contain'
-        />
+   
+      <div className="flex items-center justify-between">
+        
+        <div className="flex items-center">
+          <img
+            src={icon}
+            alt={name}
+            className="h-10 w-10 object-contain"
+          />
+        </div>
 
-        <span
-          className={`rounded-full border px-2 py-1 text-[8px] font-medium ${badgeClass}`}
-        >
-          {badge}
-        </span>
+        <div>
+          <span
+            className={`rounded-full border px-3 py-1 text-xs font-medium ${badgeClass}`}
+          >
+            {badge}
+          </span>
+        </div>
       </div>
 
-      <h3 className='mt-3 text-sm font-bold text-[#101828]'>{name}</h3>
-
-      <p className='mt-2 line-clamp-3 min-h-[42px] text-[9px] leading-[1.45] text-[#62748F]'>
-        {description}
-      </p>
-
-      <hr className='mt-auto border-[#EDF1F5]' />
-
-      <div className='mt-2 flex items-center justify-between text-[8px] text-[#62748F]'>
-        <span className='rounded bg-[#F4F6F8] px-2 py-1'>
-          {category}
-        </span>
-
-        <span>{difficulty}</span>
-
-        <span className='text-[#344054]'>
-          <span className='text-[#FFB51B]'>★</span> {rating}
-        </span>
+      <div className="mt-6">
+        <h3 className="text-2xl font-bold text-[#0F172A]">
+          {name}
+        </h3>
       </div>
 
-      <button
-        type='button'
-        disabled={selected || categorySelected}
-        onClick={handleClick}
-        className='mt-2 min-h-7 w-full rounded-[5px] bg-[#080D1C] text-[8px] font-medium text-white transition-colors hover:bg-[#111827] disabled:cursor-not-allowed disabled:bg-[#EEF2F6] disabled:text-[#94A3B8]'
-      >
-        {buttonText}
-      </button>
+      <div className="mt-3">
+        <p className="text-sm leading-6 text-[#64748B]">
+          {description}
+        </p>
+      </div>
+
+      <div className="mt-6">
+
+        <div>
+          <hr className="border-[#EDF1F5]" />
+        </div>
+
+        <div className="mt-4 flex items-center justify-between">
+
+          <div>
+            <span className="rounded-md bg-[#F1F5F9] px-3 py-2 text-xs text-[#475569]">
+              {category}
+            </span>
+          </div>
+
+          <div>
+            <span className="text-xs text-[#64748B]">
+              {difficulty}
+            </span>
+          </div>
+
+          <div>
+            <span className="text-xs text-[#334155]">
+              <span className="text-[#FFB51B]">★</span>{" "}
+              {rating}
+            </span>
+          </div>
+        </div>
+
+        <div className="mt-5">
+          <button
+            type="button"
+            disabled={selected || categorySelected}
+            onClick={handleClick}
+            className="
+              w-full
+              cursor-pointer
+              rounded-lg
+              bg-[#0A0F1D]
+              py-3
+              text-sm
+              font-medium
+              text-white
+              hover:bg-[#1A2233]
+              disabled:cursor-not-allowed
+              disabled:bg-[#EEF2F6]
+              disabled:text-[#94A3B8]
+            "
+          >
+            {buttonText}
+          </button>
+        </div>
+      </div>
     </article>
   );
 };
