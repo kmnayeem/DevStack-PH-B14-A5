@@ -16,24 +16,30 @@ const Stack = ({
     <aside id="stack" className="mx-auto w-full max-w-[380px]">
       <div
         className="
-          min-h-[240px]
+          min-h-[200px]
           w-full
-          rounded-[20px]
+          rounded-[12px]
           border
           border-[#E8EEF5]
           bg-white
-          px-[22px]
-          pt-[24px]
-          pb-[24px]
+          px-[14px]
+          pt-[16px]
+          pb-[16px]
           shadow-sm
+          md:min-h-[240px]
+          md:rounded-[20px]
+          md:px-[22px]
+          md:pt-[24px]
+          md:pb-[24px]
         "
       >
         <h2
           className="
             m-0
-            text-[24px]
+            text-[20px]
             font-bold
             text-[#0F172A]
+            md:text-[24px]
           "
         >
           Your Stack
@@ -41,43 +47,47 @@ const Stack = ({
 
         <p
           className="
-            mt-[11px]
+            mt-[8px]
             mb-0
-            text-[14px]
+            text-[12px]
             font-normal
             text-[#94A7C2]
+            md:mt-[11px]
+            md:text-[14px]
           "
         >
           {technologies.length === 0
             ? "No technologies selected yet."
             : `${technologies.length} ${
-                technologies.length === 1
-                  ? "technology"
-                  : "technologies"
+                technologies.length === 1 ? "technology" : "technologies"
               } selected.`}
         </p>
 
         {technologies.length === 0 ? (
           <div
             className="
-              mt-[20px]
+              mt-[15px]
               flex
-              h-[78px]
+              h-[65px]
               w-full
               items-center
               justify-center
-              rounded-[15px]
+              rounded-[10px]
               border-2
               border-dashed
               border-[#DFE7F1]
               text-center
+              md:mt-[20px]
+              md:h-[78px]
+              md:rounded-[15px]
             "
           >
             <span
               className="
-                text-[14px]
+                text-[12px]
                 font-normal
                 text-[#94A7C2]
+                md:text-[14px]
               "
             >
               Your stack is empty.
@@ -85,13 +95,13 @@ const Stack = ({
           </div>
         ) : (
           <>
-            <div className="mt-[20px] grid gap-2">
+            <div className="mt-[15px] grid gap-2 md:mt-[20px]">
               {technologies.map((tech) => (
                 <div
                   key={tech.id}
                   className="
                     flex
-                    min-h-[58px]
+                    min-h-[50px]
                     items-center
                     gap-2
                     rounded-lg
@@ -99,10 +109,11 @@ const Stack = ({
                     border-[#E8EEF5]
                     bg-white
                     p-2
+                    md:min-h-[58px]
                   "
                 >
                   <img
-                    className="h-8 w-8"
+                    className="h-7 w-7 md:h-8 md:w-8"
                     src={tech.icon}
                     alt={tech.name}
                   />
@@ -111,15 +122,16 @@ const Stack = ({
                     <strong
                       className="
                         block
-                        text-[11px]
+                        text-[10px]
                         font-bold
                         text-[#0F172A]
+                        md:text-[11px]
                       "
                     >
                       {tech.name}
                     </strong>
 
-                    <span className="text-[10px] text-[#64748B]">
+                    <span className="text-[9px] text-[#64748B] md:text-[10px]">
                       {tech.category}
                     </span>
                   </div>
@@ -145,7 +157,7 @@ const Stack = ({
               type="button"
               onClick={handleClearAll}
               className="
-                mt-4
+                mt-3
                 flex
                 min-h-8
                 w-full
@@ -156,11 +168,13 @@ const Stack = ({
                 rounded-lg
                 border
                 border-[#FECACA]
-                text-[11px]
+                text-[10px]
                 font-bold
                 text-[#EF4444]
                 transition-colors
                 hover:bg-[#FEF2F2]
+                md:mt-4
+                md:text-[11px]
               "
             >
               <FiTrash2 size={13} />
@@ -174,4 +188,3 @@ const Stack = ({
 };
 
 export default Stack;
-

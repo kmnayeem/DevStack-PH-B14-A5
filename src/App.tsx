@@ -41,28 +41,28 @@ const App = () => {
   };
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto px-4 md:px-0">
       <Nav />
 
       <Banner />
 
       <main className="mb-16">
         <section>
-          <div className="mb-8">
-            <h1 className="text-5xl font-bold text-[#0F172A]">
+          <div className="mb-8 text-center md:text-left">
+            <h1 className="text-2xl font-bold text-[#0F172A] md:text-5xl">
               Explore the{" "}
               <span className="bg-gradient-to-r from-[#EC4899] to-[#8B5CF6] bg-clip-text text-transparent">
                 Technologies
               </span>
             </h1>
 
-            <p className="mt-2 text-[#64748B]">
+            <p className="mt-2 text-sm text-[#64748B] md:text-base">
               Pick one technology per category to build your ideal stack.
             </p>
           </div>
 
-          <div className="grid grid-cols-4 gap-5">
-            <div className="col-span-3">
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-4">
+            <div className="col-span-1 md:col-span-3">
               <Suspense
                 fallback={
                   <div className="flex min-h-[400px] items-center justify-center">
