@@ -79,7 +79,10 @@ const TechCard = ({ tech, handleAddTech, saved }: TechCardProps) => {
 
           <div>
             <span className="text-[9px] text-[#334155] md:text-xs">
-              <span className="text-[#FFB51B]">★</span> {rating}
+              <span className="text-[#FFB51B]">
+                <i className="fa-solid fa-star"></i>
+              </span>{" "}
+              {rating}
             </span>
           </div>
         </div>
