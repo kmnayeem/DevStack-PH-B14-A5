@@ -54,7 +54,7 @@ const TechCard = ({
           <img
             src={icon}
             alt={name}
-            className="h-10 w-10 object-contain"
+            className="h-10 w-10"
           />
         </div>
 
@@ -74,7 +74,7 @@ const TechCard = ({
       </div>
 
       <div className="mt-3">
-        <p className="text-sm leading-6 text-[#64748B]">
+        <p className="text-sm text-[#64748B]">
           {description}
         </p>
       </div>

@@ -25,7 +25,7 @@ const Stack = ({
           px-[22px]
           pt-[24px]
           pb-[24px]
-          shadow-[0_3px_8px_rgba(15,23,42,0.08)]
+          shadow-sm
         "
       >
         <h2
@@ -33,8 +33,6 @@ const Stack = ({
             m-0
             text-[24px]
             font-bold
-            leading-none
-            tracking-[-0.5px]
             text-[#0F172A]
           "
         >
@@ -47,8 +45,6 @@ const Stack = ({
             mb-0
             text-[14px]
             font-normal
-            leading-none
-            tracking-[-0.1px]
             text-[#94A7C2]
           "
         >
@@ -81,8 +77,6 @@ const Stack = ({
               className="
                 text-[14px]
                 font-normal
-                leading-none
-                tracking-[-0.1px]
                 text-[#94A7C2]
               "
             >
@@ -108,7 +102,7 @@ const Stack = ({
                   "
                 >
                   <img
-                    className="h-8 w-8 shrink-0 object-contain"
+                    className="h-8 w-8"
                     src={tech.icon}
                     alt={tech.name}
                   />
@@ -117,7 +111,6 @@ const Stack = ({
                     <strong
                       className="
                         block
-                        truncate
                         text-[11px]
                         font-bold
                         text-[#0F172A]
@@ -135,7 +128,6 @@ const Stack = ({
                     type="button"
                     className="
                       ml-auto
-                      shrink-0
                       text-[#94A3B8]
                       transition-colors
                       hover:text-[#EF4444]
@@ -182,3 +174,4 @@ const Stack = ({
 };
 
 export default Stack;
+
